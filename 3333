@@ -1,0 +1,36 @@
+import streamlit as st
+
+# Define MBTI to song recommendations
+mbti_songs = {
+    'ISTJ': '“Someone Like You” - Adele',
+    'ISFJ': '“Perfect” - Ed Sheeran',
+    'INFJ': '“Fix You” - Coldplay',
+    'INTJ': '“Empire State of Mind” - Jay-Z ft. Alicia Keys',
+    'ISTP': '“Uptown Funk” - Mark Ronson ft. Bruno Mars',
+    'ISFP': '“Just the Way You Are” - Bruno Mars',
+    'INFP': '“Your Song” - Elton John',
+    'INTP': '“Lose Yourself” - Eminem',
+    'ESTP': '“Shut Up and Dance” - WALK THE MOON',
+    'ESFP': '“Happy” - Pharrell Williams',
+    'ENFP': '“Counting Stars” - OneRepublic',
+    'ENTP': '“Rolling in the Deep” - Adele',
+    'ESTJ': '“Can’t Stop the Feeling!” - Justin Timberlake',
+    'ESFJ': '“A Thousand Years” - Christina Perri',
+    'ENFJ': '“Halo” - Beyoncé',
+    'ENTJ': '“Stronger” - Kanye West',
+}
+
+st.title('MBTI 성격과 어울리는 팝송 추천')
+
+# Get user input
+name = st.text_input('이름을 입력해주세요 : ')
+mbti = st.selectbox('MBTI 유형을 선택해주세요:', list(mbti_songs.keys()))
+
+# Check if the name field is not empty and button is clicked
+if st.button('팝송 추천받기'):
+    if name:
+        song = mbti_songs.get(mbti, '선택된 MBTI 유형에 대한 노래 추천이 없습니다.')
+        st.write(f'{name}님, 선택한 MBTI 유형은 {mbti}입니다. 이 유형에 어울리는 팝송은 다음과 같습니다:')
+        st.write(song)
+    else:
+        st.write('이름을 입력해주세요!')
